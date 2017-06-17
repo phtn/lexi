@@ -5,9 +5,11 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-move": "^1.5.3",
     "react-particles-js": "^1.5.0",
     "react-slick": "^0.14.11",
-    "react-springy-parallax": "^1.0.11"
+    "react-springy-parallax": "^1.0.11",
+    "semantic-ui-react": "^0.68.5"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

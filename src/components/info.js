@@ -16,12 +16,11 @@ const settings = {
 }
 const slides = {
   color: '#999',
-  fontFamily: 'Inconsolata, monospace',
+  fontFamily: 'Roboto, sans-serif',
+  fontWeight: 100,
+  fontSize: 18
 }
-const info = {
-  border: '1px solid #444',
-  padding: '10px 20px'
-}
+
 export default props => (
   <div style={container} className='animated fadeInUp'>
     <Slider {...settings}>

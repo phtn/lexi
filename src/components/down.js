@@ -1,5 +1,4 @@
 import React from 'react'
-
 const container = {
   textAlign: 'center',
 
@@ -7,18 +6,15 @@ const container = {
 const button = {
   backgroundColor: 'rgba(33, 47, 61, 0.5)',
   border: 'none',
-  padding: '20px 40px',
-  borderRadius: 5,
+  borderRadius: 50,
+  padding: '20px 20px',
+  lineHeight: '10px'
 }
-const text = {
-  color: '#FFC300',
-  letterSpacing: 2,
-  fontFamily: 'Inconsolata, monospace'
-}
+
 export default props => (
   <div style={container}>
     <button onClick={props.click} style={button}>
-      <span style={text}>TECHNOLOGIES</span>
+      <img src={props.image} alt='' height={40} width={40}/>
     </button>
   </div>
 )

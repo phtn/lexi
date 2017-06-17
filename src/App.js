@@ -6,15 +6,16 @@ import './animated.css'
 //components
 import Profile from './components/profile'
 import Info from './components/info'
-import Tech from './components/tech'
+import Down from './components/down'
+import Nav from './components/nav'
+import Front from './components/front'
+// svgs
+import Shell from './img/shell.svg'
+import Chick from './img/chick.svg'
+import DownImage from './img/down.svg'
 
 
-const styles = {
-    fontFamily: 'Menlo-Regular, Menlo, monospace',
-    fontSize: 14,
-    color: '#CCC',
-    display: 'flex', alignItems: 'center', justifyContent: 'center'
-}
+
 const profile = {
     fontFamily: 'Menlo-Regular, Menlo, monospace',
     fontSize: 14,
@@ -23,38 +24,24 @@ const profile = {
     display: 'flex', justifyContent: 'center'
 }
 const info = {
-    fontFamily: 'Menlo-Regular, Menlo, monospace',
-    fontSize: 14,
-    color: '#CCC',
     marginTop: 320,
 }
-const tech = {
-    fontFamily: 'Menlo-Regular, Menlo, monospace',
-    fontSize: 14,
-    color: '#CCC',
+const down = {
     marginTop: 450,
 }
+
+
+
 const styl = {
     fontFamily: 'Menlo-Regular, Menlo, monospace',
     fontSize: 14,
     color: '#CCC',
     display: 'flex', alignItems: 'center',// justifyContent: 'center'
 }
-const div = {
-  height: 100,
-  width: 100,
-  backgroundColor: 'tomato',
-  borderRadius: 5,
-}
-const circle = {
-  height: 100,
-  width: 100,
-  backgroundColor: 'papayawhip',
-  borderRadius: 100,
-}
 
 
-class Index extends Component {
+
+class App extends Component {
   componentDidMount(){
     
   }
@@ -67,7 +54,7 @@ class Index extends Component {
         
         
         {/* ZERO */}
-        <Parallax.Layer offset={0} speed={1} style={{ backgroundColor: '#17202A' }}>
+        <Parallax.Layer offset={0} speed={.1} style={{ backgroundColor: '#17202A' }}>
           <Particles 
             height={'100vh'}
             params={{
@@ -96,7 +83,35 @@ class Index extends Component {
               }
             }}
             />
-            <Particles 
+            
+            
+        </Parallax.Layer>
+        <Parallax.Layer
+            offset={0}
+            speed={1}
+            style={profile}
+            >
+            <Profile />
+        </Parallax.Layer>
+        <Parallax.Layer
+            offset={0}
+            speed={2}
+            style={info}
+            >
+            <Info />
+        </Parallax.Layer>
+        <Parallax.Layer
+            offset={0}
+            speed={.5}
+            style={down}
+            >
+            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(1)}/>
+        </Parallax.Layer>
+        
+
+        {/* ONE */}
+        <Parallax.Layer offset={1} speed={.1} style={{ backgroundColor: '#111' }} >
+          <Particles 
             height={'100vh'}
             params={{
               particles: {
@@ -126,59 +141,52 @@ class Index extends Component {
             />
         </Parallax.Layer>
         <Parallax.Layer
-            offset={0}
+            offset={1}
             speed={0.2}
-            style={profile}
-            >
-            <Profile />
+        >
+           <Nav image={Shell} title={'Front - End Technologies'}/>
         </Parallax.Layer>
-        <Parallax.Layer
-            offset={0}
-            speed={0.5}
-            style={info}
-            >
-            <Info />
-        </Parallax.Layer>
-        <Parallax.Layer
-            offset={0}
-            speed={0.5}
-            style={tech}
-            >
-            <Tech click={()=> this.refs.parallax.scrollTo(1)}/>
-        </Parallax.Layer>
-        
-
-        {/* ONE */}
-        <Parallax.Layer offset={1} speed={1} style={{ backgroundColor: '#1C2833' }} />
         <Parallax.Layer
             offset={1}
-            speed={.2}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(2)}>
-            <div style={div}></div>
+            speed={2}
+        >
+          <Front />
         </Parallax.Layer>
-        
+        <Parallax.Layer
+            offset={1}
+            speed={.5}
+            style={down}
+            
+            >
+            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(2)}/>
+        </Parallax.Layer>
 
         {/* TWO */}
         <Parallax.Layer offset={2} speed={1} style={{ backgroundColor: '#212F3D' }} />
         <Parallax.Layer
-            offset={1}
-            speed={.5}
-            style={styl}
-            onClick={() => this.refs.parallax.scrollTo(2)}>
-            <div style={circle}></div>
-        </Parallax.Layer>
-
-        <Parallax.Layer
             offset={2}
             speed={0.2}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(0)}>
-            LET'S GO!
+        >
+           <Nav image={Chick} title={'Back - End Technologies'}/>
+        </Parallax.Layer>
+        <Parallax.Layer
+            offset={2}
+            speed={2}
+            style={styl}
+        >
+          
+        </Parallax.Layer>
+        <Parallax.Layer
+            offset={2}
+            speed={.5}
+            style={down}
+            
+            >
+            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(0)}/>
         </Parallax.Layer>
       </Parallax>
     )
   }
 }
   
-export default Index
+export default App
