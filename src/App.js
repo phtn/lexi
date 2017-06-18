@@ -15,7 +15,6 @@ import Back from './components/back'
 // svgs
 import Shell from './img/seashell.svg'
 import LiteDown from './img/down.svg'
-import DarkDown from './img/dark-down.svg'
 import BlueDown from './img/blue-down.svg'
 import WhiteDown from './img/white-down.svg'
 import Turtle from './img/turtle.svg'
@@ -39,12 +38,6 @@ const down = {
 
 
 
-const styl = {
-    fontFamily: 'Menlo-Regular, Menlo, monospace',
-    fontSize: 14,
-    color: '#CCC',
-    display: 'flex', alignItems: 'center',// justifyContent: 'center'
-}
 
 
 
@@ -188,7 +181,7 @@ class App extends Component {
                   speed: 1
                 },
                 line_linked: {
-                  distance: 120
+                  distance: 20
                 },
               },
               interactivity: {
