@@ -5,6 +5,8 @@ import Particles from 'react-particles-js'
 // style
 import './animated.css'
 import 'semantic-ui-css/semantic.min.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 //components
 import Profile from './components/profile'
 import Info from './components/info'
@@ -57,11 +59,11 @@ class App extends Component {
     this.setState({oneDownSize: 0})
     setTimeout(t=> {
       this.setState({oneDownSize: 40})
-    }, 1000)
+    }, 300)
     this.setState({profileSize: 150})
     setTimeout(t=> {
       this.setState({profileSize: 200})
-    }, 1000)
+    }, 900)
     this.setState({profileOpacity: 0})
     setTimeout(t=> {
       this.setState({profileOpacity: 1})
@@ -188,7 +190,10 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={WhiteDown} bg='rgba(0, 0, 0, 0.1)' size={40} click={()=> this.refs.parallax.scrollTo(2)}/>
+            <Down image={WhiteDown} 
+              bg='rgba(0, 0, 0, 0.1)' 
+              size={this.state.oneDownSize} 
+              click={()=> this.handleDown(2)}/>
         </Parallax.Layer>
 
         {/* TWO */}
@@ -240,7 +245,10 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={BlueDown} bg='rgba(0, 0, 0, 0.1)' size={40} click={()=> this.refs.parallax.scrollTo(0)}/>
+            <Down image={BlueDown} 
+              bg='rgba(0, 0, 0, 0.1)' 
+              size={this.state.oneDownSize} 
+              click={()=> this.handleDown(0)}/>
         </Parallax.Layer>
       </Parallax>
     )

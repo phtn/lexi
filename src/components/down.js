@@ -20,7 +20,7 @@ export default props => (
   >
   {i=> (
     <div style={container}>
-      <button onClick={props.click} 
+      <button onMouseDown={props.click} 
         style={Object.assign({}, button, {backgroundColor: props.bg})}>
         <img src={props.image} alt='' height={i.n} width={i.n}/>
       </button>

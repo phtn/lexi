@@ -1,7 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 import ReactLogo from '../img/react.svg'
 import ReduxLogo from '../img/redux.svg'
@@ -40,7 +39,6 @@ const slides = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 30,
   
 }
 const settings = {

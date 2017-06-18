@@ -13,7 +13,7 @@ export default props => (
   <Animate
     default={{n:200, o: 1}}
     data={{n:props.size, o:props.opacity}}
-    duration={100}
+    duration={1750}
     easing='easeIn'
   >
   {i=> (
