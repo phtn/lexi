@@ -1,4 +1,5 @@
 import React from 'react'
+import { Animate } from 'react-move'
 const container = {
   textAlign: 'center',
 
@@ -12,10 +13,19 @@ const button = {
 }
 
 export default props => (
-  <div style={container}>
-    <button onClick={props.click} 
-      style={Object.assign({}, button, {backgroundColor: props.bg})}>
-      <img src={props.image} alt='' height={40} width={40}/>
-    </button>
-  </div>
+  <Animate 
+    default={{n:40}}
+    data={{n:props.size}}
+    duration={1000}
+  >
+  {i=> (
+    <div style={container}>
+      <button onClick={props.click} 
+        style={Object.assign({}, button, {backgroundColor: props.bg})}>
+        <img src={props.image} alt='' height={i.n} width={i.n}/>
+      </button>
+    </div>
+  )}
+  
+  </Animate>
 )

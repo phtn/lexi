@@ -1,4 +1,5 @@
 import React from 'react'
+import { Animate } from 'react-move'
 import Profile from '../profile.jpg'
 
 
@@ -9,14 +10,24 @@ const pic = {
 
 
 export default props => (
-  <div>
-    <img 
-      src={Profile} 
-      style={pic} 
-      height={200} 
-      width={200} 
-      alt=''
-      className='animated fadeIn' 
-      />
-  </div>
+  <Animate
+    default={{n:200, o: 1}}
+    data={{n:props.size, o:props.opacity}}
+    duration={100}
+    easing='easeIn'
+  >
+  {i=> (
+    <div>
+      <img 
+        src={Profile} 
+        style={Object.assign({}, pic, {opacity: i.o})} 
+        height={i.n} 
+        width={i.n} 
+        alt=''
+        className='animated fadeIn' 
+        />
+    </div>
+  )}
+  
+  </Animate>
 )

@@ -42,8 +42,31 @@ const down = {
 
 
 class App extends Component {
+  state = {
+    oneDownSize: 40,
+    profileSize: 200,
+    profileOpacity: 1
+  }
   componentDidMount(){
     
+  }
+  handleDown(p){
+    setTimeout(t=> {
+      this.refs.parallax.scrollTo(p)
+    }, 300)
+    this.setState({oneDownSize: 0})
+    setTimeout(t=> {
+      this.setState({oneDownSize: 40})
+    }, 1000)
+    this.setState({profileSize: 150})
+    setTimeout(t=> {
+      this.setState({profileSize: 200})
+    }, 1000)
+    this.setState({profileOpacity: 0})
+    setTimeout(t=> {
+      this.setState({profileOpacity: 1})
+    }, 1000)
+
   }
   render(){
     return(
@@ -91,7 +114,7 @@ class App extends Component {
             speed={1}
             style={profile}
             >
-            <Profile />
+            <Profile size={this.state.profileSize} opacity={this.state.profileOpacity} />
         </Parallax.Layer>
         <Parallax.Layer
             offset={0}
@@ -105,7 +128,10 @@ class App extends Component {
             speed={.5}
             style={down}
             >
-            <Down image={LiteDown} bg='rgba(33, 47, 61, 0.5)' click={()=> this.refs.parallax.scrollTo(1)}/>
+            <Down image={LiteDown} bg='rgba(33, 47, 61, 0.5)' 
+            click={()=> this.handleDown(1)}
+            size={this.state.oneDownSize}
+            />
         </Parallax.Layer>
         
 
@@ -162,7 +188,7 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={WhiteDown} bg='rgba(0, 0, 0, 0.1)' click={()=> this.refs.parallax.scrollTo(2)}/>
+            <Down image={WhiteDown} bg='rgba(0, 0, 0, 0.1)' size={40} click={()=> this.refs.parallax.scrollTo(2)}/>
         </Parallax.Layer>
 
         {/* TWO */}
@@ -214,7 +240,7 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={BlueDown} bg='rgba(0, 0, 0, 0.1)' click={()=> this.refs.parallax.scrollTo(0)}/>
+            <Down image={BlueDown} bg='rgba(0, 0, 0, 0.1)' size={40} click={()=> this.refs.parallax.scrollTo(0)}/>
         </Parallax.Layer>
       </Parallax>
     )
