@@ -2,17 +2,24 @@ import React, { Component } from 'react';
 import Parallax from 'react-springy-parallax'
 import Particles from 'react-particles-js'
 
+// style
 import './animated.css'
+import 'semantic-ui-css/semantic.min.css'
 //components
 import Profile from './components/profile'
 import Info from './components/info'
 import Down from './components/down'
 import Nav from './components/nav'
 import Front from './components/front'
+import Back from './components/back'
 // svgs
-import Shell from './img/shell.svg'
-import Chick from './img/chick.svg'
-import DownImage from './img/down.svg'
+import Shell from './img/seashell.svg'
+import LiteDown from './img/down.svg'
+import DarkDown from './img/dark-down.svg'
+import BlueDown from './img/blue-down.svg'
+import WhiteDown from './img/white-down.svg'
+import Turtle from './img/turtle.svg'
+
 
 
 
@@ -105,12 +112,16 @@ class App extends Component {
             speed={.5}
             style={down}
             >
-            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(1)}/>
+            <Down image={LiteDown} bg='rgba(33, 47, 61, 0.5)' click={()=> this.refs.parallax.scrollTo(1)}/>
         </Parallax.Layer>
         
 
         {/* ONE */}
-        <Parallax.Layer offset={1} speed={.1} style={{ backgroundColor: '#111' }} >
+        <Parallax.Layer 
+          offset={1} 
+          speed={0} 
+          style={{ backgroundColor: '#222' }} 
+          >
           <Particles 
             height={'100vh'}
             params={{
@@ -119,7 +130,7 @@ class App extends Component {
                   value: 100
                 },
                 color: {
-                  value: '#FF5733'
+                  value: '#eee'
                 },
                 move: {
                   speed: 1
@@ -144,37 +155,65 @@ class App extends Component {
             offset={1}
             speed={0.2}
         >
-           <Nav image={Shell} title={'Front - End Technologies'}/>
+           <Nav image={Shell} title={'Front - End'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={2}
+            speed={.5}
         >
           <Front />
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={.5}
+            speed={1}
             style={down}
             
             >
-            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(2)}/>
+            <Down image={WhiteDown} bg='rgba(0, 0, 0, 0.1)' click={()=> this.refs.parallax.scrollTo(2)}/>
         </Parallax.Layer>
 
         {/* TWO */}
-        <Parallax.Layer offset={2} speed={1} style={{ backgroundColor: '#212F3D' }} />
+        <Parallax.Layer offset={2} speed={1} style={{ backgroundColor: '#0F151B' }}>
+          <Particles 
+            height={'100vh'}
+            params={{
+              particles: {
+                number: {
+                  value: 100
+                },
+                color: {
+                  value: '#0F151B'
+                },
+                move: {
+                  speed: 1
+                },
+                line_linked: {
+                  distance: 120
+                },
+              },
+              interactivity: {
+                detect_on: 'canvas',
+                events: {
+                  onclick: {
+                    enable: true,
+                    mode: 'repulse'
+                  }
+                }
+              }
+            }}
+            />
+        </Parallax.Layer>
         <Parallax.Layer
             offset={2}
             speed={0.2}
         >
-           <Nav image={Chick} title={'Back - End Technologies'}/>
+           <Nav image={Turtle} title={'Back - End'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
             speed={2}
-            style={styl}
         >
-          
+          <Back />
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
@@ -182,7 +221,7 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={DownImage} click={()=> this.refs.parallax.scrollTo(0)}/>
+            <Down image={BlueDown} bg='rgba(0, 0, 0, 0.1)' click={()=> this.refs.parallax.scrollTo(0)}/>
         </Parallax.Layer>
       </Parallax>
     )

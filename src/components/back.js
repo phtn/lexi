@@ -3,10 +3,10 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
-import ReactLogo from '../img/react.svg'
-import ReduxLogo from '../img/redux.svg'
-import VueLogo from '../img/vue.svg'
-import SemanticLogo from '../img/semantic-ui.svg'
+import FirebaseLogo from '../img/firebase.svg'
+import MongoLogo from '../img/mongodb.svg'
+import NodejsLogo from '../img/nodejs.svg'
+
 const container = {
   padding: '150px 50px',
   display: 'flex',
@@ -58,12 +58,12 @@ export default props => (
       <div style={slides}>
     <Card style={card}>
       <Card.Content>
-        <Image floated='right' size='mini' src={ReduxLogo} style={img} />
+        <Image floated='right' size='mini' src={MongoLogo} style={img} />
         <Card.Header style={header}>
-          Redux
+          MongoDB
         </Card.Header>
         <Card.Meta style={meta}>
-          Dan Abramov
+          Open Source
         </Card.Meta>
         <Card.Description>
           45
@@ -85,12 +85,12 @@ export default props => (
     <div style={slides}>
     <Card style={card}>
       <Card.Content>
-        <Image floated='right' size='mini' src={ReactLogo} style={img} />
+        <Image floated='right' size='mini' src={FirebaseLogo} style={img} />
         <Card.Header style={header}>
-          React
+          Firebase
         </Card.Header>
         <Card.Meta style={meta}>
-          Dan Abramov
+          Google
         </Card.Meta>
         <Card.Description>
           97
@@ -112,39 +112,12 @@ export default props => (
     <div style={slides}>
     <Card style={card}>
       <Card.Content>
-        <Image floated='right' size='mini' src={VueLogo} style={img} />
+        <Image floated='right' size='mini' src={NodejsLogo} style={img} />
         <Card.Header style={header}>
-          Vue
+          NodeJS
         </Card.Header>
         <Card.Meta style={meta}>
-          Vuejs.org
-        </Card.Meta>
-        <Card.Description>
-          97
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic>
-            <Icon style={github} disabled name='github'/>
-          </Button>
-          <Button basic>
-            <Icon style={heart} disabled name='heart'/>
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    </div>
-
-    <div style={slides}>
-    <Card style={card}>
-      <Card.Content>
-        <Image floated='right' size='mini' src={SemanticLogo} style={img} />
-        <Card.Header style={header}>
-          Semantic UI
-        </Card.Header>
-        <Card.Meta style={meta}>
-          TechnologyAdvice
+          open source
         </Card.Meta>
         <Card.Description>
           97

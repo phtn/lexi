@@ -9,6 +9,7 @@
     "react-particles-js": "^1.5.0",
     "react-slick": "^0.14.11",
     "react-springy-parallax": "^1.0.11",
+    "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.5"
   },
   "devDependencies": {
