@@ -47,28 +47,12 @@ class App extends Component {
   state = {
     oneDownSize: 40,
     profileSize: 200,
-    profileOpacity: 1
   }
   componentDidMount(){
     
   }
   handleDown(p){
-    setTimeout(t=> {
-      this.refs.parallax.scrollTo(p)
-    }, 300)
-    this.setState({oneDownSize: 0})
-    setTimeout(t=> {
-      this.setState({oneDownSize: 40})
-    }, 300)
-    this.setState({profileSize: 150})
-    setTimeout(t=> {
-      this.setState({profileSize: 200})
-    }, 900)
-    this.setState({profileOpacity: 0})
-    setTimeout(t=> {
-      this.setState({profileOpacity: 1})
-    }, 1000)
-
+    this.refs.parallax.scrollTo(p)
   }
   render(){
     return(
@@ -140,7 +124,7 @@ class App extends Component {
         {/* ONE */}
         <Parallax.Layer 
           offset={1} 
-          speed={0} 
+          speed={1} 
           style={{ backgroundColor: '#222' }} 
           >
           <Particles 
@@ -180,13 +164,13 @@ class App extends Component {
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={.5}
+            speed={1}
         >
           <Front />
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={1}
+            speed={0.7}
             style={down}
             
             >
@@ -241,7 +225,7 @@ class App extends Component {
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
-            speed={.5}
+            speed={0.7}
             style={down}
             
             >

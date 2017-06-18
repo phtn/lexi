@@ -1,7 +1,5 @@
 import React from 'react'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 import FirebaseLogo from '../img/firebase.svg'
 import MongoLogo from '../img/mongodb.svg'

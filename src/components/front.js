@@ -15,6 +15,7 @@ const container = {
 const card = {
   border: 'transparent',
   borderRadius: 0,
+  barckgroundColor: '#555'
 }
 const img = {
   height: 30,
@@ -48,13 +49,14 @@ const settings = {
   vertical: true,
   autoplay: true,
   autoplaySpeed: 3000,
+  dots: true,
 }
 
 export default props => (
   <div style={container}>
     <Slider {...settings}>
       <div style={slides}>
-    <Card style={card}>
+    <Card style={card} color='grey'>
       <Card.Content>
         <Image floated='right' size='mini' src={ReduxLogo} style={img} />
         <Card.Header style={header}>
