@@ -12,8 +12,9 @@ import Profile from './components/profile'
 import Info from './components/info'
 import Down from './components/down'
 import Nav from './components/nav'
-import Front from './components/front'
+//import Front from './components/front'
 import Back from './components/back'
+import Apps from './components/apps'
 // svgs
 import Shell from './img/seashell.svg'
 import LiteDown from './img/down.svg'
@@ -39,20 +40,59 @@ const down = {
 }
 
 
-
-
+let interval
 
 
 class App extends Component {
   state = {
     oneDownSize: 40,
     profileSize: 200,
+    bmiLikes: 0,
+    weight: 120,
+    weightPlus: false,
+    weightMinus: false,
   }
   componentDidMount(){
     
   }
   handleDown(p){
     this.refs.parallax.scrollTo(p)
+  }
+  incBMIlikes(){
+    this.setState({bmiLikes: this.state.bmiLikes + 1})
+  }
+  weightPlus(){
+    this.setState({weight: this.state.weight + 1})
+  }
+  weightMinus(){
+    this.setState({weight: this.state.weight - 1})
+  }
+  addWeight(weight){
+    if(weight < 400){
+      interval = setInterval(t=> {
+        this.setState({weight: this.state.weight + 1})
+      },1)
+    }
+  }
+  subtractWeight(weight){
+    if (weight >= 0){
+      interval = setInterval(t=> {
+        this.setState({weight: this.state.weight - 1})
+      },1)
+    }
+  }
+  weightPlusOff(){
+    clearInterval(interval)
+  }
+  weightPlusOn(){
+    this.setState({weightPlus: true}, ()=> this.addWeight(this.state.weight))
+    
+  }
+  weightMinusOn(){
+    this.setState({weightPlus: true}, ()=> this.subtractWeight(this.state.weight))
+  }
+  weightMinusOff(){
+    clearInterval(interval)
   }
   render(){
     return(
@@ -82,7 +122,7 @@ class App extends Component {
                 },
               },
               interactivity: {
-                detect_on: 'canvas',
+                detect_on: 'window',
                 events: {
                   onclick: {
                     enable: true,
@@ -145,7 +185,7 @@ class App extends Component {
                 },
               },
               interactivity: {
-                detect_on: 'canvas',
+                detect_on: 'window',
                 events: {
                   onclick: {
                     enable: true,
@@ -160,13 +200,24 @@ class App extends Component {
             offset={1}
             speed={0.2}
         >
-           <Nav image={Shell} title={'Front - End'}/>
+           <Nav image={Shell} title={'Apps'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
             speed={1}
         >
-          <Front />
+          <Apps 
+            likes={this.state.bmiLikes} 
+            like={()=> this.incBMIlikes()} 
+            weight={this.state.weight}
+            weightPlus={()=> this.weightPlus()}
+            weightPlusOn={()=> this.weightPlusOn()}
+            weightPlusOff={()=> this.weightPlusOff()}
+            weightMinus={()=> this.weightMinus()}
+            weightMinusOn={()=> this.weightMinusOn()}
+            weightMinusOff={()=> this.weightMinusOff()}
+            />
+          
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
@@ -200,7 +251,7 @@ class App extends Component {
                 },
               },
               interactivity: {
-                detect_on: 'canvas',
+                detect_on: 'window',
                 events: {
                   onclick: {
                     enable: true,

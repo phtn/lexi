@@ -6,7 +6,7 @@ import MongoLogo from '../img/mongodb.svg'
 import NodejsLogo from '../img/nodejs.svg'
 
 const container = {
-  padding: '150px 50px',
+  paddingTop: '50px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -38,16 +38,16 @@ const slides = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 30,
-  
+  height: 300,
 }
 const settings = {
   arrows: false,
   infinite: true,
   speed: 500,
   vertical: true,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 3000,
+  dots: true,
 }
 
 export default props => (

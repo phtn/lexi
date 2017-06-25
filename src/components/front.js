@@ -56,7 +56,7 @@ export default props => (
   <div style={container}>
     <Slider {...settings}>
       <div style={slides}>
-    <Card style={card} color='grey'>
+    <Card style={card}>
       <Card.Content>
         <Image floated='right' size='mini' src={ReduxLogo} style={img} />
         <Card.Header style={header}>
