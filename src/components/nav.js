@@ -14,7 +14,7 @@ const title = {
   lineHeight: '30px'
 }
 const img = {
-  marginRight: 20
+  marginRight: 10
 }
 
 

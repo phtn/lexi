@@ -1,8 +1,10 @@
 import React from 'react'
 import Slider from 'react-slick'
 // eslint-disable-next-line
-import { Card, Image, Icon, Button, Input, Label, Form } from 'semantic-ui-react'
+import { Card, Image, Icon, Button, Input, Label, Form, Grid, Divider } from 'semantic-ui-react'
 import Human from '../img/human.svg'
+import Plus from '../img/plus.svg'
+import Minus from '../img/minus.svg'
 
 const container = {
   paddingTop: '50px',
@@ -17,13 +19,22 @@ const card = {
   backgroundColor: 'rgba(0,0,0,0.2)',
   height: 370,
 }
+const titleContent = {
+  maxHeight: 60,
+  backgroundColor: 'transparent',
+  border: 'none',
+  borderBottom: '1px solid rgba(128, 128, 128, 0.3)'
+}
 const content = {
-  border: '0px',
-  marginBottom: -10
+  maxHeight: 100,
+  backgroundColor: 'transparent',
+  border: 'none',
+  borderBottom: '1px solid rgba(128, 128, 128, 0.5)'
 }
 const img = {
-  height: 30,
-  width: 30,
+  height: 25,
+  width: 25,
+  pointerEvents: 'none',
 }
 const header = {
   color: '#777',
@@ -52,25 +63,41 @@ const slides = {
 }
 const settings = {
   arrows: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   vertical: true,
   autoplay: false,
   autoplaySpeed: 3000,
   dots: true,
+  draggable: false
 }
-const inputLabel = {
-  width: 70,
-  textAlign: 'center',
-  fontSize: 20,
+const button = {
+  //width: 60, #32CD32 #483D8B
+  //textAlign: 'center',
   cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'transparent',
 }
-const input = {
-  width: 50,
-  textAlign: 'center',
-  color: 'teal',
-  fontSize: 20
+const label = {
+  fontFamily: 'Roboto, sans-serif',
+  fontSize: 25,
+  padding: 0,
+  fontWeight: 100,
+  backgroundColor: 'transparent',
+  width: '100%',
+  color: '#E0FFFF'
 }
+const labelGrid = {
+  display: 'flex',
+  alignItems: 'center'
+}
+const field = {
+  backgroundColor: '#eee'
+}
+
+
 
 export default props => (
   <div style={container}>
@@ -78,82 +105,95 @@ export default props => (
       
       <div style={slides}>
         <Card style={card}>
-          <Card.Content style={content}>
+          <Card.Content style={titleContent}>
             <Image floated='right' size='mini' src={Human} style={img} />
             <Card.Header style={header}>
               BMI
             </Card.Header>
             <Card.Meta style={meta}>
-              check where you ranked!
+              coming soon
             </Card.Meta>
           </Card.Content>
             
-          <Card.Content>
-            <Form>
-              <Form.Field>
-                <label style={header}>Weight  <strong>lbs</strong> </label>
-                <Input labelPosition='right'>
-                  <Label 
-                    style={inputLabel}
-                    onClick={props.weightMinus}
-                    onTouchStart={props.weightMinusOn}
-                    onTouchEnd={props.weightMinusOff}
-                    onMouseDown={props.weightMinusOn}
-                    onMouseUp={props.weightMinusOff}
-                  >-</Label>
-                  <input disabled style={input} value={props.weight}/>
-                  <Label 
-                    style={inputLabel}
-                    onClick={props.weightPlus}
-                    onTouchStart={props.weightPlusOn}
-                    onTouchEnd={props.weightPlusOff}
-                    onMouseDown={props.weightPlusOn}
-                    onMouseUp={props.weightPlusOff}
-                    
-                  >+</Label>
-                </Input>
-              </Form.Field>
-
-              <Form.Field>
-                <label style={header}>Height  <strong>ft in</strong> </label>
-                <Input labelPosition='right'>
-                  <Label 
-                    style={inputLabel}
-                    onClick={props.heightMinus}
-                    onTouchStart={props.heightMinusOn}
-                    onTouchEnd={props.heightMinusOff}
-                    onMouseDown={props.heightMinusOn}
-                    onMouseUp={props.heightMinusOff}
-                  >-</Label>
-                  <input disabled style={input} value={props.height}/>
-                  <Label 
-                    style={inputLabel}
-                    onClick={props.heightPlus}
-                    onTouchStart={props.heightPlusOn}
-                    onTouchEnd={props.heightPlusOff}
-                    onMouseDown={props.heightPlusOn}
-                    onMouseUp={props.heightPlusOff}
-                    
-                  >+</Label>
-                </Input>
-              </Form.Field>
-
-            </Form>
+          <Card.Content style={content}>
+            <label style={header}>Weight  <strong>lbs</strong> </label>
+            <Grid columns={3}>
+              <Grid.Column>
+              <Button 
+                style={button}
+                onClick={props.weightMinus}
+                onTouchStart={props.weightMinusOn}
+                onTouchEnd={props.weightMinusOff}
+                onMouseDown={props.weightMinusOn}
+                onMouseUp={props.weightMinusOff}
+              >
+                <Image disabled shape='rounded' size='mini' src={Minus} style={img} />
+              </Button>
+              </Grid.Column>
+              <Grid.Column style={labelGrid}>
+              <Button style={label}>
+                {props.weight}
+              </Button>
+              </Grid.Column>
+              <Grid.Column>
+              <Button 
+                style={button}
+                onClick={props.weightPlus}
+                onTouchStart={props.weightPlusOn}
+                onTouchEnd={props.weightPlusOff}
+                onMouseDown={props.weightPlusOn}
+                onMouseUp={props.weightPlusOff}
+                
+              >
+                <Image disabled shape='rounded' size='mini' src={Plus} style={img} />
+              </Button>
+              </Grid.Column>
+            </Grid>
+                
           </Card.Content>
+
+
+          <Card.Content style={content}>
+            <label style={header}>Height  <strong>ft in</strong> </label>
+            <Grid columns={3}>
+              <Grid.Column>
+              <Button 
+                style={button}
+                  onClick={props.heightMinus}
+                  onTouchStart={props.heightMinusOn}
+                  onTouchEnd={props.heightMinusOff}
+                  onMouseDown={props.heightMinusOn}
+                  onMouseUp={props.heightMinusOff}
+              >
+                <Image disabled shape='rounded' size='mini' src={Minus} style={img} />
+              </Button>
+              </Grid.Column>
+              <Grid.Column style={labelGrid}>
+              <Button style={label}>
+                <strong>5 </strong>' 6"
+              </Button>
+              </Grid.Column>
+              <Grid.Column>
+              <Button 
+                style={button}
+                onClick={props.heightPlus}
+                onTouchStart={props.heightPlusOn}
+                onTouchEnd={props.heightPlusOff}
+                onMouseDown={props.heightPlusOn}
+                onMouseUp={props.heightPlusOff}
+              >
+                <Image disabled shape='rounded' size='mini' src={Plus} style={img} />
+              </Button>
+              </Grid.Column>
+            </Grid>
+                
+          </Card.Content>
+
+          
           
           <Card.Content extra>
             <div className='ui two buttons'>
               
-              <Button
-                style={likes}
-                inverted
-                color='grey'
-                content=''
-                icon='heart'
-                label={{ color: 'grey', basic: true, pointing: 'right', content: 'Likes  ' + props.likes }}
-                labelPosition='left'
-                onClick={props.like}
-              />
             </div>
           </Card.Content>
         </Card>

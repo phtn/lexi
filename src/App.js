@@ -84,9 +84,10 @@ class App extends Component {
   weightPlusOff(){
     clearInterval(interval)
   }
-  weightPlusOn(){
-    this.setState({weightPlus: true}, ()=> this.addWeight(this.state.weight))
-    
+  weightPlusOn(e){
+    this.setState({weightPlus: true}, (e)=> {
+      this.addWeight(this.state.weight)
+    })
   }
   weightMinusOn(){
     this.setState({weightPlus: true}, ()=> this.subtractWeight(this.state.weight))
