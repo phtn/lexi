@@ -40,7 +40,7 @@ const down = {
 }
 
 
-let interval
+let weightInterval, heightInterval
 
 
 class App extends Component {
@@ -51,15 +51,20 @@ class App extends Component {
     weight: 120,
     weightPlus: false,
     weightMinus: false,
+    heightInches: 7,
+    heightFeet: 5,
+    weightKg: 0,
+    heightMeters: 0,
   }
   componentDidMount(){
-    
+    this.setState({weightKg: this.state.weight * 0.45}, c=> console.log(this.state.weightKg))
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
   }
   handleDown(p){
     this.refs.parallax.scrollTo(p)
   }
-  incBMIlikes(){
-    this.setState({bmiLikes: this.state.bmiLikes + 1})
+  getWeight(){
+    return this.state.weight
   }
   weightPlus(){
     this.setState({weight: this.state.weight + 1})
@@ -69,20 +74,22 @@ class App extends Component {
   }
   addWeight(weight){
     if(weight < 400){
-      interval = setInterval(t=> {
+      weightInterval = setInterval(t=> {
         this.setState({weight: this.state.weight + 1})
+        this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)}, c=> console.log(this.state.weightKg))
       },1)
     }
   }
   subtractWeight(weight){
     if (weight >= 0){
-      interval = setInterval(t=> {
+      weightInterval = setInterval(t=> {
         this.setState({weight: this.state.weight - 1})
+        this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)}, c=> console.log(this.state.weightKg))
       },1)
     }
   }
   weightPlusOff(){
-    clearInterval(interval)
+    clearInterval(weightInterval)
   }
   weightPlusOn(e){
     this.setState({weightPlus: true}, (e)=> {
@@ -93,7 +100,35 @@ class App extends Component {
     this.setState({weightPlus: true}, ()=> this.subtractWeight(this.state.weight))
   }
   weightMinusOff(){
-    clearInterval(interval)
+    clearInterval(weightInterval)
+  }
+  heightAddInch(height){
+    if ( height !== 11 ){
+      this.setState({heightInches: this.state.heightInches + 1})
+    } else {
+      this.setState({heightInches: 0}, c=> this.setState({heightFeet: this.state.heightFeet + 1}))
+    }
+  }
+  heightInchesPlusOn(){
+    this.heightAddInch(this.state.heightInches)
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
+  }
+  heightInchesPlusOff(){
+    clearInterval(heightInterval)
+  }
+  heightSubtractInch(height){
+    if ( height > 0 ){
+      this.setState({heightInches: this.state.heightInches - 1})
+    } else {
+      this.setState({heightInches: 11}, c=> this.setState({heightFeet: this.state.heightFeet - 1}))
+    }
+  }
+  heightInchesMinusOn(){
+    this.heightSubtractInch(this.state.heightInches)
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
+  }
+  heightInchesMinusOff(){
+    clearInterval(heightInterval)
   }
   render(){
     return(
@@ -208,15 +243,27 @@ class App extends Component {
             speed={1}
         >
           <Apps 
-            likes={this.state.bmiLikes} 
-            like={()=> this.incBMIlikes()} 
+            //likes={this.state.bmiLikes} 
+            //like={()=> this.incBMIlikes()} 
+            //weightPlus={()=> this.weightPlus()}
             weight={this.state.weight}
-            weightPlus={()=> this.weightPlus()}
+            weightKg={this.state.weightKg}
             weightPlusOn={()=> this.weightPlusOn()}
             weightPlusOff={()=> this.weightPlusOff()}
             weightMinus={()=> this.weightMinus()}
             weightMinusOn={()=> this.weightMinusOn()}
             weightMinusOff={()=> this.weightMinusOff()}
+            
+            weightLabel={this.state.weight}
+
+            heightMeters={this.state.heightMeters}
+            heightInches={this.state.heightInches}
+            heightFeet={this.state.heightFeet}
+            heightPlusOn={()=> this.heightInchesPlusOn()}
+            heightPlusOff={()=> this.heightInchesPlusOff()}
+            heightMinus={()=> this.heightInchesMinus()}
+            heightMinusOn={()=> this.heightInchesMinusOn()}
+            heightMinusOff={()=> this.heightInchesMinusOff()}
             />
           
         </Parallax.Layer>

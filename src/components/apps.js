@@ -40,11 +40,18 @@ const header = {
   color: '#777',
   fontFamily: 'Roboto, sans-serif',
   fontWeight: 100,
+  fontSize: 16,
+}
+const subheader = {
+  fontFamily: 'Inconsolata, monospace',
+  fontWeight: 'bolder',
+  fontSize: 12,
 }
 const meta = {
   fontFamily: 'Inconsolata, monospace',
   color: '#999'
 }
+// eslint-disable-next-line
 const likes = {
   color: '#777',
   fontFamily: 'Roboto, sans-serif',
@@ -82,17 +89,19 @@ const button = {
 }
 const label = {
   fontFamily: 'Roboto, sans-serif',
-  fontSize: 25,
+  fontSize: 20,
   padding: 0,
   fontWeight: 100,
   backgroundColor: 'transparent',
   width: '100%',
-  color: '#E0FFFF'
+  color: '#E0FFFF',
+  lineHeight: '20px',
 }
 const labelGrid = {
   display: 'flex',
   alignItems: 'center'
 }
+// eslint-disable-next-line
 const field = {
   backgroundColor: '#eee'
 }
@@ -116,7 +125,7 @@ export default props => (
           </Card.Content>
             
           <Card.Content style={content}>
-            <label style={header}>Weight  <strong>lbs</strong> </label>
+            <label style={header}>Weight <strong><span style={subheader}>{props.weightKg} kg</span></strong> </label>
             <Grid columns={3}>
               <Grid.Column>
               <Button 
@@ -130,11 +139,13 @@ export default props => (
                 <Image disabled shape='rounded' size='mini' src={Minus} style={img} />
               </Button>
               </Grid.Column>
+              
               <Grid.Column style={labelGrid}>
-              <Button style={label}>
-                {props.weight}
-              </Button>
+                <Button style={label}>
+                  <span>{props.weightLabel}</span> <span style={subheader}> lbs</span>
+                </Button>
               </Grid.Column>
+              
               <Grid.Column>
               <Button 
                 style={button}
@@ -154,33 +165,31 @@ export default props => (
 
 
           <Card.Content style={content}>
-            <label style={header}>Height  <strong>ft in</strong> </label>
+            <label style={header}>Height  <strong><span style={subheader}>{props.heightMeters} m</span></strong> </label>
             <Grid columns={3}>
               <Grid.Column>
               <Button 
                 style={button}
-                  onClick={props.heightMinus}
                   onTouchStart={props.heightMinusOn}
                   onTouchEnd={props.heightMinusOff}
-                  onMouseDown={props.heightMinusOn}
-                  onMouseUp={props.heightMinusOff}
+                  //onMouseDown={props.heightMinusOn}
+                  //onMouseUp={props.heightMinusOff}
               >
                 <Image disabled shape='rounded' size='mini' src={Minus} style={img} />
               </Button>
               </Grid.Column>
               <Grid.Column style={labelGrid}>
               <Button style={label}>
-                <strong>5 </strong>' 6"
+                <strong>{props.heightFeet} '</strong>{` ${props.heightInches} "`}
               </Button>
               </Grid.Column>
               <Grid.Column>
               <Button 
                 style={button}
-                onClick={props.heightPlus}
                 onTouchStart={props.heightPlusOn}
                 onTouchEnd={props.heightPlusOff}
-                onMouseDown={props.heightPlusOn}
-                onMouseUp={props.heightPlusOff}
+                //onMouseDown={props.heightPlusOn}
+                //onMouseUp={props.heightPlusOff}
               >
                 <Image disabled shape='rounded' size='mini' src={Plus} style={img} />
               </Button>
