@@ -57,8 +57,8 @@ class App extends Component {
     heightMeters: 0,
   }
   componentDidMount(){
-    this.setState({weightKg: this.state.weight * 0.45}, c=> console.log(this.state.weightKg))
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
+    this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)})
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
   }
   handleDown(p){
     this.refs.parallax.scrollTo(p)
@@ -111,7 +111,7 @@ class App extends Component {
   }
   heightInchesPlusOn(){
     this.heightAddInch(this.state.heightInches)
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
   }
   heightInchesPlusOff(){
     clearInterval(heightInterval)
@@ -125,7 +125,7 @@ class App extends Component {
   }
   heightInchesMinusOn(){
     this.heightSubtractInch(this.state.heightInches)
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.25) + (this.state.heightInches * 0.25)).toFixed(3)})
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
   }
   heightInchesMinusOff(){
     clearInterval(heightInterval)
@@ -236,7 +236,7 @@ class App extends Component {
             offset={1}
             speed={0.2}
         >
-           <Nav image={Shell} title={'Apps'}/>
+           <Nav image={Shell} title={''}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
@@ -314,7 +314,7 @@ class App extends Component {
             offset={2}
             speed={0.2}
         >
-           <Nav image={Turtle} title={'Back - End'}/>
+           <Nav image={Turtle} title={''}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
