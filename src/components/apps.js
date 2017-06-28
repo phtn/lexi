@@ -130,7 +130,7 @@ export default props => (
               <Grid.Column>
               <Button 
                 style={button}
-                onClick={props.weightMinus}
+                //onClick={props.weightMinus}
                 onTouchStart={props.weightMinusOn}
                 onTouchEnd={props.weightMinusOff}
                 onMouseDown={props.weightMinusOn}
@@ -149,7 +149,7 @@ export default props => (
               <Grid.Column>
               <Button 
                 style={button}
-                onClick={props.weightPlus}
+                //onClick={props.weightPlus}
                 onTouchStart={props.weightPlusOn}
                 onTouchEnd={props.weightPlusOff}
                 onMouseDown={props.weightPlusOn}
@@ -170,8 +170,9 @@ export default props => (
               <Grid.Column>
               <Button 
                 style={button}
-                  onTouchStart={props.heightMinusOn}
-                  onTouchEnd={props.heightMinusOff}
+                  onClick={props.heightSubtract}
+                  //onTouchStart={props.heightMinusOn}
+                  //onTouchEnd={props.heightMinusOff}
                   //onMouseDown={props.heightMinusOn}
                   //onMouseUp={props.heightMinusOff}
               >
@@ -186,8 +187,9 @@ export default props => (
               <Grid.Column>
               <Button 
                 style={button}
-                onTouchStart={props.heightPlusOn}
-                onTouchEnd={props.heightPlusOff}
+                onClick={props.heightAdd}
+                //onTouchStart={props.heightPlusOn}
+                //onTouchEnd={props.heightPlusOff}
                 //onMouseDown={props.heightPlusOn}
                 //onMouseUp={props.heightPlusOff}
               >
@@ -201,9 +203,10 @@ export default props => (
           
           
           <Card.Content extra>
-            <div className='ui two buttons'>
-              
-            </div>
+            <label style={header}>Your BMI</label>
+            <Button style={label}>
+              <strong>{props.bmi}</strong>
+            </Button>
           </Card.Content>
         </Card>
       </div>

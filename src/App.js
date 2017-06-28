@@ -40,7 +40,7 @@ const down = {
 }
 
 
-let weightInterval, heightInterval
+let weightInterval
 
 
 class App extends Component {
@@ -55,11 +55,16 @@ class App extends Component {
     heightFeet: 5,
     weightKg: 0,
     heightMeters: 0,
+    bmi: 0
   }
-  componentDidMount(){
-    this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)})
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
-  }
+  componentWillMount(){
+    this.setState({weightKg: Number(this.state.weight * 0.45359237).toFixed(2)})
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+      this.weightOverSquaredHeight()
+    })
+    //
+    
+}
   handleDown(p){
     this.refs.parallax.scrollTo(p)
   }
@@ -76,7 +81,9 @@ class App extends Component {
     if(weight < 400){
       weightInterval = setInterval(t=> {
         this.setState({weight: this.state.weight + 1})
-        this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)}, c=> console.log(this.state.weightKg))
+        this.setState({weightKg: Number(this.state.weight * 0.45359237).toFixed(2)}, c=> {
+          this.weightOverSquaredHeight()
+        })
       },1)
     }
   }
@@ -84,7 +91,9 @@ class App extends Component {
     if (weight >= 0){
       weightInterval = setInterval(t=> {
         this.setState({weight: this.state.weight - 1})
-        this.setState({weightKg: Number(this.state.weight * 0.45).toFixed(2)}, c=> console.log(this.state.weightKg))
+        this.setState({weightKg: Number(this.state.weight * 0.45359237).toFixed(2)}, c=> {
+          this.weightOverSquaredHeight()
+        })
       },1)
     }
   }
@@ -102,34 +111,51 @@ class App extends Component {
   weightMinusOff(){
     clearInterval(weightInterval)
   }
-  heightAddInch(height){
-    if ( height !== 11 ){
-      this.setState({heightInches: this.state.heightInches + 1})
+  heightAddInch(){
+    if ( this.state.heightInches !== 11 ){
+      this.setState({heightInches: this.state.heightInches + 1}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+          this.weightOverSquaredHeight()
+        })
+        
+      })
     } else {
-      this.setState({heightInches: 0}, c=> this.setState({heightFeet: this.state.heightFeet + 1}))
+      this.setState({heightFeet: this.state.heightFeet + 1}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025)).toFixed(3)}, c=> {
+          this.weightOverSquaredHeight()
+          this.setState({heightInches: 0})
+        })
+      })
     }
   }
-  heightInchesPlusOn(){
-    this.heightAddInch(this.state.heightInches)
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
-  }
-  heightInchesPlusOff(){
-    clearInterval(heightInterval)
-  }
-  heightSubtractInch(height){
-    if ( height > 0 ){
-      this.setState({heightInches: this.state.heightInches - 1})
+  
+  heightSubtractInch(){
+    if ( this.state.heightInches > 0 ){
+      this.setState({heightInches: this.state.heightInches - 1}, c=> {
+        //console.log(this.state.heightFeet * 12 + this.state.heightInches)
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+          this.weightOverSquaredHeight()
+        })
+      })
     } else {
-      this.setState({heightInches: 11}, c=> this.setState({heightFeet: this.state.heightFeet - 1}))
+      this.setState({heightInches: 11})
+      this.setState({heightFeet: this.state.heightFeet - 1}, c=> {
+        //console.log(this.state.heightFeet * 12 + this.state.heightInches)
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+          this.weightOverSquaredHeight()
+        })
+      })
     }
   }
-  heightInchesMinusOn(){
-    this.heightSubtractInch(this.state.heightInches)
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)})
+  weightOverSquaredHeight(){
+    this.setState({bmi: this.state.weightKg / Math.pow(this.state.heightMeters, 2)}, c=> {
+      console.log(this.state.bmi)
+    })
   }
-  heightInchesMinusOff(){
-    clearInterval(heightInterval)
-  }
+
+
+
+
   render(){
     return(
       <Parallax pages={3} ref='parallax'>
@@ -259,11 +285,15 @@ class App extends Component {
             heightMeters={this.state.heightMeters}
             heightInches={this.state.heightInches}
             heightFeet={this.state.heightFeet}
+            heightAdd={()=> this.heightAddInch(this.state.heightInch)}
+            heightSubtract={()=> this.heightSubtractInch(this.state.heightInch)}
             heightPlusOn={()=> this.heightInchesPlusOn()}
             heightPlusOff={()=> this.heightInchesPlusOff()}
             heightMinus={()=> this.heightInchesMinus()}
             heightMinusOn={()=> this.heightInchesMinusOn()}
             heightMinusOff={()=> this.heightInchesMinusOff()}
+
+            bmi={this.state.bmi.toFixed(2)}
             />
           
         </Parallax.Layer>
