@@ -59,7 +59,7 @@ class App extends Component {
   }
   componentWillMount(){
     this.setState({weightKg: Number(this.state.weight * 0.45359237).toFixed(2)})
-    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+    this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
       this.weightOverSquaredHeight()
     })
     //
@@ -114,14 +114,14 @@ class App extends Component {
   heightAddInch(){
     if ( this.state.heightInches !== 11 ){
       this.setState({heightInches: this.state.heightInches + 1}, c=> {
-        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
           this.weightOverSquaredHeight()
         })
         
       })
     } else {
       this.setState({heightFeet: this.state.heightFeet + 1}, c=> {
-        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025)).toFixed(3)}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254)).toFixed(3)}, c=> {
           this.weightOverSquaredHeight()
           this.setState({heightInches: 0})
         })
@@ -133,7 +133,7 @@ class App extends Component {
     if ( this.state.heightInches > 0 ){
       this.setState({heightInches: this.state.heightInches - 1}, c=> {
         //console.log(this.state.heightFeet * 12 + this.state.heightInches)
-        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
           this.weightOverSquaredHeight()
         })
       })
@@ -141,7 +141,7 @@ class App extends Component {
       this.setState({heightInches: 11})
       this.setState({heightFeet: this.state.heightFeet - 1}, c=> {
         //console.log(this.state.heightFeet * 12 + this.state.heightInches)
-        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.025) + (this.state.heightInches * 0.025)).toFixed(3)}, c=> {
+        this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
           this.weightOverSquaredHeight()
         })
       })
