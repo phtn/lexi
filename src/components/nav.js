@@ -7,11 +7,12 @@ const nav = {
   display: 'flex',
 }
 const title = {
-  color: '#999',
-  fontFamily: 'Roboto, sans-serif',
-  fontWeight: 100,
+  color: '#c4dff6',
+  fontFamily: 'Inconsolata, mono-space',
+  fontWeight: 'bold',
   fontSize: 18,
-  lineHeight: '30px'
+  lineHeight: '30px',
+  letterSpacing: 1
 }
 const img = {
   marginRight: 10
@@ -21,7 +22,7 @@ const img = {
 export default props => (
   <div style={container}>
     <div style={nav}>
-      <img src={props.image} alt='' height={30} width={30} style={img} />
+      <img src={props.image} alt='' height={20} width={20} style={img} />
       <div style={title}>{props.title}</div>
       <br/>
     </div>

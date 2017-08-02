@@ -14,9 +14,9 @@ import Down from './components/down'
 import Nav from './components/nav'
 //import Front from './components/front'
 import Back from './components/back'
-import Apps from './components/apps'
+import APPS from './components/apps2'
 // svgs
-import Shell from './img/seashell.svg'
+import Chick from './img/chick.svg'
 import LiteDown from './img/down.svg'
 import BlueDown from './img/blue-down.svg'
 import WhiteDown from './img/white-down.svg'
@@ -62,9 +62,7 @@ class App extends Component {
     this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
       this.weightOverSquaredHeight()
     })
-    //
-    
-}
+  }
   handleDown(p){
     this.refs.parallax.scrollTo(p)
   }
@@ -117,7 +115,6 @@ class App extends Component {
         this.setState({heightMeters: Number((this.state.heightFeet * 12 * 0.0254) + (this.state.heightInches * 0.0254)).toFixed(3)}, c=> {
           this.weightOverSquaredHeight()
         })
-        
       })
     } else {
       this.setState({heightFeet: this.state.heightFeet + 1}, c=> {
@@ -262,13 +259,14 @@ class App extends Component {
             offset={1}
             speed={0.2}
         >
-           <Nav image={Shell} title={''}/>
+           <Nav image={Chick} title={'Apps'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
             speed={1}
         >
-          <Apps 
+        <APPS />
+          {/* <Apps 
             //likes={this.state.bmiLikes} 
             //like={()=> this.incBMIlikes()} 
             //weightPlus={()=> this.weightPlus()}
@@ -294,7 +292,7 @@ class App extends Component {
             heightMinusOff={()=> this.heightInchesMinusOff()}
 
             bmi={this.state.bmi.toFixed(2)}
-            />
+            /> */}
           
         </Parallax.Layer>
         <Parallax.Layer
