@@ -8,21 +8,23 @@ const nav = {
 }
 const title = {
   color: '#c4dff6',
-  fontFamily: 'Inconsolata, mono-space',
-  fontWeight: 'bold',
+  fontFamily: 'Roboto, sans-serif',
+  fontWeight: 100,
   fontSize: 18,
   lineHeight: '30px',
-  letterSpacing: 1
+  letterSpacing: 1,
 }
 const img = {
-  marginRight: 10
+  marginRight: 10,
+  transform: 'rotate(45deg)'
+  
 }
 
 
 export default props => (
   <div style={container}>
     <div style={nav}>
-      <img src={props.image} alt='' height={20} width={20} style={img} />
+      <img src={props.image} alt='' height={25} width={25} style={img} />
       <div style={title}>{props.title}</div>
       <br/>
     </div>

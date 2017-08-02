@@ -16,7 +16,7 @@ import Nav from './components/nav'
 import Back from './components/back'
 import APPS from './components/apps2'
 // svgs
-import Chick from './img/chick.svg'
+import Cube from './img/cube.svg'
 import LiteDown from './img/down.svg'
 import BlueDown from './img/blue-down.svg'
 import WhiteDown from './img/white-down.svg'
@@ -259,7 +259,7 @@ class App extends Component {
             offset={1}
             speed={0.2}
         >
-           <Nav image={Chick} title={'Apps'}/>
+           <Nav image={Cube} title={'Apps'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
