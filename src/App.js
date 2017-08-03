@@ -13,14 +13,14 @@ import Info from './components/info'
 import Down from './components/down'
 import Nav from './components/nav'
 //import Front from './components/front'
-import Back from './components/back'
+import Projects from './components/projects'
 import APPS from './components/apps2'
 // svgs
 import Cube from './img/cube.svg'
 import LiteDown from './img/down.svg'
 import BlueDown from './img/blue-down.svg'
 import WhiteDown from './img/white-down.svg'
-import Turtle from './img/turtle.svg'
+import BlackHole from './img/black-hole.svg'
 
 
 
@@ -203,7 +203,7 @@ class App extends Component {
         </Parallax.Layer>
         <Parallax.Layer
             offset={0}
-            speed={2}
+            speed={1}
             style={info}
             >
             <Info />
@@ -223,7 +223,7 @@ class App extends Component {
         {/* ONE */}
         <Parallax.Layer 
           offset={1} 
-          speed={1} 
+          speed={.1} 
           style={{ backgroundColor: '#222' }} 
           >
           <Particles 
@@ -257,7 +257,7 @@ class App extends Component {
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={0.2}
+            speed={.2}
         >
            <Nav image={Cube} title={'Apps'}/>
         </Parallax.Layer>
@@ -297,7 +297,7 @@ class App extends Component {
         </Parallax.Layer>
         <Parallax.Layer
             offset={1}
-            speed={0.7}
+            speed={0.2}
             style={down}
             
             >
@@ -342,13 +342,13 @@ class App extends Component {
             offset={2}
             speed={0.2}
         >
-           <Nav image={Turtle} title={''}/>
+           <Nav image={BlackHole} title={'rabbit hole'}/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
             speed={2}
         >
-          <Back />
+          <Projects/>
         </Parallax.Layer>
         <Parallax.Layer
             offset={2}
@@ -356,7 +356,7 @@ class App extends Component {
             style={down}
             
             >
-            <Down image={BlueDown} 
+            <Down image={WhiteDown} 
               bg='rgba(0, 0, 0, 0.1)' 
               size={this.state.oneDownSize} 
               click={()=> this.handleDown(0)}/>

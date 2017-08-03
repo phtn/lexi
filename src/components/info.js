@@ -16,7 +16,7 @@ const settings = {
   autoplaySpeed: 3000,
 }
 const slides = {
-  color: '#999',
+  color: '#c4dff6',
   fontFamily: 'Roboto, sans-serif',
   fontWeight: 100,
   fontSize: 18
