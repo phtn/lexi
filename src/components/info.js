@@ -30,8 +30,8 @@ const icon = {
 export default props => (
   <div style={container} className='animated fadeInUp'>
     <Slider {...settings}>
-      <div style={slides}><Icon style={icon} name='address card'/>Wil Medina</div>
-      <div style={slides}><Icon style={icon} name='puzzle'/>Software Engineer</div>
+      <div style={slides}><Icon style={icon} name='address card'/>Jun Orville Lecena</div>
+      <div style={slides}><Icon style={icon} name='puzzle'/>Web Developer</div>
       <div style={slides}><Icon style={icon} name='map pin'/>Philadelphia, PA</div>
       <div style={slides}><Icon style={icon} name='twitter'/>@phtn458</div>
       <div style={slides}><Icon style={icon} name='github'/>github.com/phtn</div>
